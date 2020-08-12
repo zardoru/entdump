@@ -136,6 +136,10 @@ int print_textures_of_maps_in_directory(char *filepath) {
     int nfiles = 0;
 
     for (auto &path : std::filesystem::directory_iterator(filepath)) {
+
+        if (path.path().extension() != ".bsp")
+            continue;
+
         printf("opening %s\n", path.path().string().c_str());
 
         std::string filename = path.path().string();
@@ -143,7 +147,10 @@ int print_textures_of_maps_in_directory(char *filepath) {
         dheader_t header;
         FILE *f = fopen(filename.c_str(), "rb");
         if (!read_bsp(f, header, buf, filename.c_str())) {
-            printf("Map textures:\n");
+            if (print_headers) {
+                printf("Map textures:\n");
+                printf("======================:\n");
+            }
             print_bsp_textures(header.lumps[LUMP_TEXINFO], buf, filename.c_str());
         }
         fclose(f);

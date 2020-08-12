@@ -6,7 +6,6 @@
 *.user
 *.userosscache
 *.sln.docstates
-*.bsp
 
 # clion crap
 cmake-build-debug/
