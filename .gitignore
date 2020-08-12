@@ -6,6 +6,11 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.bsp
+
+# clion crap
+cmake-build-debug/
+cmake-build-release/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
