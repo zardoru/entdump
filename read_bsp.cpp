@@ -17,8 +17,6 @@ int read_bsp(FILE *in, dheader_t &header, std::vector<uint8_t> &buf, const char 
 
     //map header structs onto the buffer
     header = *(dheader_t *) buf.data();
-    for (i = 0; i < sizeof(dheader_t) / 4; i++)
-        ((int *) &header)[i] = ((int *) &header)[i];
 
     //r1: check header pointers point within allocated data
     for (i = 0; i < HEADER_LUMPS; i++) {
